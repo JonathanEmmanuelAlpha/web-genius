@@ -25,14 +25,14 @@ export default function AccountLayout({
         <div className="flex flex-col items-center gap-2 mt-4 text-sm text-slate-500">
           <div className="">
             <span>Vous avez déjà un compte ?</span>
-            <Link className="text-blue-500 ml-2" href={"/account?action=login"}>
+            <Link className="text-blue-500 ml-2 hover:text-blue-700 duration-200" href={"/account?action=login"}>
               se connecter
             </Link>
           </div>
           <div className="">
             <span>Vous n'avez pas de compte ?</span>
             <Link
-              className="text-blue-500 ml-2"
+              className="text-blue-500 ml-2 hover:text-blue-700 duration-200"
               href={"/account?action=sign-up"}
             >
               s'inscrire
@@ -41,7 +41,7 @@ export default function AccountLayout({
           <div className="">
             <span>Votre compte n'est pas activé ?</span>
             <Link
-              className="text-blue-500 ml-2"
+              className="text-blue-500 ml-2 hover:text-blue-700 duration-200"
               href={"/account?action=activation"}
             >
               Activer mon compte
