@@ -23,15 +23,23 @@ export default function Login() {
           maxChar={50}
           onChange={(e) => setEmail(e.target.value)}
         />
-        <Input
-          type="password"
-          label="Mot de passe"
-          id="password"
-          required
-          value={password}
-          maxChar={50}
-          onChange={(e) => setPassword(e.target.value)}
-        />
+        <div className="">
+          <Link
+            className="block w-full text-blue-500 ml-2 text-sm pr-2 text-end hover:text-blue-700 duration-200"
+            href={"/account?action=forgot-password"}
+          >
+            Mot de passe oublié ?
+          </Link>
+          <Input
+            type="password"
+            label="Mot de passe"
+            id="password"
+            required
+            value={password}
+            maxChar={50}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+        </div>
         <SubmitButton text="Connection" />
       </form>
     </>
