@@ -20,8 +20,14 @@ export default function Input(props: {
         <input
           className="w-full border-none text-slate-700 outline-none bg-inherit"
           type={props.type}
-          onChange={props.onChange}
+          onChange={(e) => {
+            if (props.maxChar && e.target.value.length > props.maxChar) return;
+
+            props.onChange(e);
+          }}
           id={props.id}
+          name={props.id}
+          value={props.value}
         />
       </div>
       {props.maxChar && (

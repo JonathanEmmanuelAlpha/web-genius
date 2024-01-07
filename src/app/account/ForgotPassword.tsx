@@ -3,6 +3,7 @@
 import Input from "@/components/form/Input";
 import SubmitButton from "@/components/form/SubmitButton";
 import React, { useState } from "react";
+import Linking from "./ui/Linking";
 
 export default function ForgotPassword() {
   const [email, setEmail] = useState("");
@@ -22,7 +23,10 @@ export default function ForgotPassword() {
           maxChar={50}
           onChange={(e) => setEmail(e.target.value)}
         />
+
         <SubmitButton text="Démarer" />
+
+        <Linking login signin activation />
       </form>
     </>
   );

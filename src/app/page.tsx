@@ -1,6 +1,8 @@
+import { NextPage } from "next";
+
 import Card from "@/components/article/Card";
 
-export default function Home() {
+const Home: NextPage = async () => {
   return (
     <div
       className="
@@ -11,27 +13,26 @@ export default function Home() {
       <Card
         id="X4875rscSSKJf4f"
         thumbnail="/images/tests/1.png"
-        title="Lorem ipsum dolor amet"
-        description="Lorem ipsum dolor set alet consectetur adiscipim elit"
-        pubAt="Avril 2023"
-        readers={124}
+        title="A complete beginner guide on SOLID design principles"
+        pubAt="Septembre 2023"
+        readers={512}
       />
       <Card
         id="X4875rscSSKJf4f"
         thumbnail="/images/tests/2.jpg"
-        title="Lorem ipsum dolor amet"
-        description="Lorem ipsum dolor set alet consectetur adiscipim elit"
+        title="JavaScript programming language a step buy step guide 2024"
         pubAt="Avril 2023"
-        readers={124}
+        readers={789}
       />
       <Card
         id="X4875rscSSKJf4f"
         thumbnail="/images/tests/3.jpg"
-        title="Lorem ipsum dolor amet"
-        description="Lorem ipsum dolor set alet consectetur adiscipim elit"
-        pubAt="Avril 2023"
-        readers={124}
+        title="Lorem ipsum dolor set alet consectetur adiscipim elit"
+        pubAt="Mai 2023"
+        readers={478}
       />
     </div>
   );
-}
+};
+
+export default Home;

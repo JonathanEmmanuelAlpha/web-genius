@@ -3,13 +3,11 @@
 import Alert from "@/components/form/Alert";
 import Input from "@/components/form/Input";
 import SubmitButton from "@/components/form/SubmitButton";
-import Textarea from "@/components/form/Textarea";
+
 import { FormEvent, useState } from "react";
 
 export default function Creator() {
   const [title, setTitle] = useState("");
-  const [description, setDescription] = useState("");
-  const [tags, setTags] = useState("");
   const [readTime, setReadTime] = useState("");
   const [category, setCategory] = useState("");
 
@@ -20,7 +18,7 @@ export default function Creator() {
   }
 
   return (
-    <div className="max-w-[1024px] mx-auto my-0">
+    <div className="max-w-[768px] mx-auto my-0">
       <h2 className="text-center uppercase py-4 text-xl text-[--primary-color] font-medium">
         Ajouter un article
       </h2>
@@ -33,14 +31,6 @@ export default function Creator() {
           maxChar={50}
           value={title}
           onChange={(e) => setTitle(e.target.value)}
-        />
-        <Textarea
-          id="description"
-          label="Desription"
-          required
-          maxChar={120}
-          value={description}
-          onChange={(e) => setDescription(e.target.value)}
         />
         <div className="w-full flex justify-center items-center gap-8">
           <Input
@@ -64,14 +54,6 @@ export default function Creator() {
             onChange={(e) => setReadTime(e.target.value)}
           />
         </div>
-        <Textarea
-          id="tags"
-          label="Tags(ex: #tag1 #tag2)"
-          required
-          maxChar={120}
-          value={description}
-          onChange={(e) => setDescription(e.target.value)}
-        />
         <Alert
           type="danger"
           message="Lorem ipsum dolor set alet, consectetur adiscipim elit."

@@ -24,7 +24,6 @@ export default function DashboardLayout({
   return (
     <div className="flex relative">
       <SideBar>
-        <SidebarItem url="" text="Statistics" icon={<BarChart />} alert />
         <SidebarItem
           url="authors-requests"
           text="Authors requests"

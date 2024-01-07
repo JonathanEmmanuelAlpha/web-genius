@@ -12,42 +12,14 @@ export default function AccountLayout({
   children: React.ReactNode;
 }) {
   return (
-    <div className="ideal-h my-0 mx-auto flex items-center justify-center">
-      <div className="h-[70vh] w-[400px]">
-        <img
-          className="w-full h-full object-cover"
-          src={"/images/R.jpg"}
-          alt="banner"
-        />
-      </div>
-      <div className="w-[450px] h-[70vh] p-6 flex flex-col items-center justify-center bg-slate-50  shadow-lg rounded">
+    <div className="ideal-h p-4 my-0 mx-auto flex items-center justify-center">
+      <img
+        className="w-[434px] acc-cust-h object-cover"
+        src={"/images/R.jpg"}
+        alt="banner"
+      />
+      <div className="w-[434px] acc-cust-h p-4 flex flex-col items-center justify-center bg-slate-50  shadow-lg rounded">
         <div className="w-full">{children}</div>
-        <div className="flex flex-col items-center gap-2 mt-4 text-sm text-slate-500">
-          <div className="">
-            <span>Vous avez déjà un compte ?</span>
-            <Link className="text-blue-500 ml-2 hover:text-blue-700 duration-200" href={"/account?action=login"}>
-              se connecter
-            </Link>
-          </div>
-          <div className="">
-            <span>Vous n'avez pas de compte ?</span>
-            <Link
-              className="text-blue-500 ml-2 hover:text-blue-700 duration-200"
-              href={"/account?action=sign-up"}
-            >
-              s'inscrire
-            </Link>
-          </div>
-          <div className="">
-            <span>Votre compte n'est pas activé ?</span>
-            <Link
-              className="text-blue-500 ml-2 hover:text-blue-700 duration-200"
-              href={"/account?action=activation"}
-            >
-              Activer mon compte
-            </Link>
-          </div>
-        </div>
       </div>
     </div>
   );

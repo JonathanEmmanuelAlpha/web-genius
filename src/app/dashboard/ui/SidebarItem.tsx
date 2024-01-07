@@ -45,7 +45,7 @@ export default function SidebarItem(props: {
         {!expanded && (
           <div
             className="
-            absolute left-full rounded px-2 py-1 ml-6
+            absolute left-full rounded px-2 py-1 ml-6 w-max 
             bg-indigo-50 text-indigo-800 text-sm
             invisible opacity-50 -translate-x-3 transition-all
             group-hover:opacity-100 group-hover:visible group-hover:translate-x-0

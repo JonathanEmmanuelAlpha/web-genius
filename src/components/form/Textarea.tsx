@@ -18,8 +18,13 @@ export default function Textarea(props: {
         </div>
         <textarea
           className="w-full border-none outline-none text-slate-700 bg-inherit"
-          onChange={props.onChange}
+          onChange={(e) => {
+            if (props.maxChar && e.target.value.length > props.maxChar) return;
+
+            props.onChange(e);
+          }}
           id={props.id}
+          value={props.value}
         />
       </div>
       {props.maxChar && (

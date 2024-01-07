@@ -5,7 +5,6 @@ export default function Card(props: {
   id: string;
   thumbnail: string;
   title: string;
-  description: string;
   pubAt: string;
   readers: number;
 }) {
@@ -19,11 +18,10 @@ export default function Card(props: {
         alt={`${props.title} - thumbnail`}
         className="w-full h-48 rounded-t"
       />
-      <span className="px-4 text-lg text-slate-700 capitalize font-semibold">
+      <span className="title-font px-4 text-xl text-slate-900 capitalize">
         {props.title}
       </span>
-      <p className="px-4 text-slate-500 w-full">{props.description}</p>
-      <div className="px-4 pb-4 flex items-center justify-between text-slate-500 text-sm font-semibold">
+      <div className="px-4 pb-4 flex items-center justify-between text-slate-500 text-sm">
         <span>{props.pubAt}</span>
         <span>{props.readers} lecteurs</span>
       </div>

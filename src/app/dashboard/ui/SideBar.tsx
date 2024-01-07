@@ -59,7 +59,7 @@ export default function SideBar({ children }: { children: React.ReactNode }) {
           />
           <div
             className={`
-            flex justify-between items-center w-40
+            flex justify-between items-center
             overflow-hidden transition-all ${expanded ? "w-40 ml-3" : "w-0"}
           `}
           >
