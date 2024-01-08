@@ -10,21 +10,32 @@ import { LINKS } from "./page";
 import { login } from "@/services/auth.service";
 import Alert from "@/components/form/Alert";
 import { ApiResponse, ApiResponseType } from "@/models/response-api";
-import { useAuth } from "@/contexts/AuthProvider";
+import useToken from "@/hooks/useToken";
 
 export default function Login() {
-  const { updateToken } = useAuth();
+  const { updateToken } = useToken();
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [response, setResponse] = useState<any>(null);
 
+  const [loading, setLoading] = useState(false);
+
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    login(email, password).then((res) => {
-      setResponse(res);
-      updateToken(res.message);
-    });
+
+    setResponse(null);
+    setLoading(true);
+
+    login(email, password)
+      .then((res) => {
+        setLoading(false);
+        setResponse(res);
+        updateToken(res.message);
+      })
+      .catch((error) => {
+        setLoading(false);
+      });
   };
 
   return (
@@ -61,13 +72,11 @@ export default function Login() {
         {response != null && (
           <Alert
             message={response.message}
-            type={
-              response.status == ApiResponseType.ERROR ? "danger" : "success"
-            }
+            type={response.type == ApiResponseType.ERROR ? "danger" : "success"}
           />
         )}
 
-        <SubmitButton text="Connection" />
+        <SubmitButton text="Connection" loading={loading} />
 
         <Linking signin activation />
       </form>

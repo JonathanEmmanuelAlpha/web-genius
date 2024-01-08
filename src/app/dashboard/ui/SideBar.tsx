@@ -50,28 +50,6 @@ export default function SideBar({ children }: { children: React.ReactNode }) {
         <SidebarContext.Provider value={{ expanded, active, update }}>
           <ul className="flex-1 px-3">{children}</ul>
         </SidebarContext.Provider>
-
-        <div className="border-t flex pt-3 pb-3 pl-3 pr-1">
-          <img
-            className="w-10 h-10 rounded-md"
-            src="/images/avatars/user7.jpg"
-            alt="Avater - 7"
-          />
-          <div
-            className={`
-            flex justify-between items-center
-            overflow-hidden transition-all ${expanded ? "w-40 ml-3" : "w-0"}
-          `}
-          >
-            <div className="leading-4">
-              <h4 className="semi-bold">John Doe</h4>
-              <span className="text-xs text-slate-600">johndoe@gmail.com</span>
-            </div>
-            <IconButton className="p-1">
-              <MoreVert />
-            </IconButton>
-          </div>
-        </div>
       </nav>
     </aside>
   );

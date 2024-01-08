@@ -14,6 +14,7 @@ export interface ApiResponse {
 }
 
 export interface UserResponse {
+  id: string;
   pseudo: string;
   picture: string;
   email: string;

@@ -3,7 +3,6 @@ import NextLink from "next/link";
 import React from "react";
 
 export default function AuthorCard2(props: {
-  author: string;
   pseudo: string;
   avatar: string;
   joinAt: string;
@@ -18,7 +17,7 @@ export default function AuthorCard2(props: {
       <span className="text-slate-700 text-lg capitalize">{props.pseudo}</span>
       <span className="text-slate-500">{props.joinAt}</span>
       <a
-        href={`http://localhost:3000/account/profile?ref=${props.pseudo}`}
+        href={`http://localhost:3000/profile?ref=${props.pseudo}`}
         target="_blank"
         rel="noopener noreferrer"
         className="text-[--primary-color] px-3 capitalize font-semibold"
@@ -26,17 +25,6 @@ export default function AuthorCard2(props: {
         <span>bio</span>
         <Link />
       </a>
-      <div className="flex items-center justify-between gap-2">
-        <NextLink
-          href={`/dashboard/articles?filter=${props.author}`}
-          className="px-4 py-1.5 rounded-3xl text-white bg-blue-500"
-        >
-          Données
-        </NextLink>
-        <button className="px-4 py-1.5 rounded-3xl text-white bg-red-500">
-          Retirer
-        </button>
-      </div>
     </div>
   );
 }

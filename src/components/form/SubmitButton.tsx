@@ -22,7 +22,7 @@ export default function SubmitButton(props: {
           {props.text}
         </button>
         {props.loading && (
-          <div className="flex items-center justify-center roundedabsolute">
+          <div className="flex items-center justify-center w-full rounded bg-indigo-800 absolute">
             <ProgressBar
               size={35}
               trackWidth={5}
@@ -30,6 +30,7 @@ export default function SubmitButton(props: {
               progress={25}
               spinnerMode
               indicatorColor="#fff"
+              trackColor="rgb(67, 56, 202)"
             />
           </div>
         )}

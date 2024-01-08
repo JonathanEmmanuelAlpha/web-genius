@@ -8,22 +8,38 @@ import { signup } from "@/services/auth.service";
 import { ALLOWED_METHOD, AUTH_FORM_NAMES } from "@/utils/contants";
 import Alert from "@/components/form/Alert";
 import { useSearchParams } from "next/navigation";
+import { ApiResponseType } from "@/models/response-api";
 
 export default function Register() {
-  const params = useSearchParams();
-  const message = params.get("message");
-  const status = params.get("status");
-
   const [email, setEmail] = useState("");
-  const [pass, setPass] = useState("");
-  const [passer, setPasser] = useState("");
+  const [password, setPassword] = useState("");
+  const [passwordConf, setPasswordConf] = useState("");
+
+  const [response, setResponse] = useState<any>(null);
+  const [loading, setLoading] = useState(false);
+
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+
+    setResponse(null);
+    setLoading(true);
+
+    signup(email, password, passwordConf)
+      .then((res) => {
+        setLoading(false);
+        setResponse(res);
+      })
+      .catch((error) => {
+        setLoading(false);
+      });
+  };
 
   return (
     <>
       <h1 className="text-center text-2xl text-[--primary-color] m-0 mb-8">
         S'inscrire
       </h1>
-      <form action={signup} method={ALLOWED_METHOD.POST}>
+      <form onSubmit={handleSubmit} method={ALLOWED_METHOD.POST}>
         <Input
           id={AUTH_FORM_NAMES.email}
           label="Addresse mail"
@@ -37,26 +53,26 @@ export default function Register() {
           label="Mot de passe"
           required
           type="password"
-          value={pass}
-          onChange={(e) => setPass(e.target.value)}
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
         />
         <Input
           id={AUTH_FORM_NAMES.passwordConf}
           label="Confirmer le mot de passe"
           required
           type="password"
-          value={passer}
-          onChange={(e) => setPasser(e.target.value)}
+          value={passwordConf}
+          onChange={(e) => setPasswordConf(e.target.value)}
         />
 
-        {message && status && (
+        {response != null && (
           <Alert
-            message={message}
-            type={parseInt(status) === 200 ? "success" : "danger"}
+            message={response.message}
+            type={response.type == ApiResponseType.ERROR ? "danger" : "success"}
           />
         )}
 
-        <SubmitButton text="S'inscrire" />
+        <SubmitButton text="S'inscrire" loading={loading} />
 
         <Linking login activation />
       </form>

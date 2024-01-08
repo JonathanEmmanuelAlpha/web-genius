@@ -2,9 +2,8 @@ import Link from "next/link";
 import React from "react";
 
 export default function Card(props: {
-  id: string;
+  channel: string;
   order: number;
-  author: string;
   title: string;
   createAt: string;
   reads: number;
@@ -27,11 +26,11 @@ export default function Card(props: {
         <button className="text-red-500">Supprimer</button>
         <Link
           className="text-blue-500"
-          href={`/dashboard/creator?edition=${props.id}`}
+          href={`/dashboard/creator?edition=${props.channel}`}
         >
           Editer
         </Link>
-        <Link className="text-yellow-500" href={`/articles/${props.id}`}>
+        <Link className="text-yellow-500" href={`/articles/${props.channel}`}>
           Lire
         </Link>
       </div>

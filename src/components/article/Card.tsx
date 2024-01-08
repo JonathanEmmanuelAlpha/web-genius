@@ -2,7 +2,7 @@ import Link from "next/link";
 import React from "react";
 
 export default function Card(props: {
-  id: string;
+  channel: string;
   thumbnail: string;
   title: string;
   pubAt: string;
@@ -10,7 +10,7 @@ export default function Card(props: {
 }) {
   return (
     <Link
-      href={`/articles/${props.id}`}
+      href={`/articles/${props.channel}`}
       className="w-[320px] bg-white shadow flex flex-col gap-4 rounded"
     >
       <img

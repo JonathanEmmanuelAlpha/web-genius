@@ -5,11 +5,12 @@ import React from "react";
 import ProgressBar from "../form/ProgressBar";
 import Account from "./Account";
 import { LINKS } from "@/app/account/page";
+import { useAuth } from "@/contexts/AuthProvider";
 
 export default function AccountLink() {
-  let user = null;
+  const { currentUser, loadingUser, logout } = useAuth();
 
-  if (false) {
+  if (loadingUser) {
     return (
       <div className="flex flex-wrap items-center justify-evenly gap-4">
         <ProgressBar
@@ -25,7 +26,7 @@ export default function AccountLink() {
 
   return (
     <div className="flex flex-wrap items-center justify-evenly gap-4">
-      {!user && (
+      {!currentUser && (
         <>
           <Link
             className="
@@ -48,9 +49,13 @@ export default function AccountLink() {
         </>
       )}
 
-      {user && (
+      {currentUser && (
         <>
           <Link
+            onClick={(e) => {
+              e.preventDefault();
+              logout();
+            }}
             className="
                 w-max block px-4 py-2 rounded-full text-center border-2 border-transparent bg-red-500
              text-slate-50 hover:bg-transparent hover:text-red-500 hover:border-red-500
@@ -58,6 +63,14 @@ export default function AccountLink() {
             href={"/account?action=logout"}
           >
             Se déconnecter
+          </Link>
+          <Link href={`/profile`} className="flex flex-col items-center">
+            <img
+              className="w-[35px] h-[35px] mb-1 rounded-full"
+              src={currentUser.picture}
+              alt={currentUser.pseudo}
+            />
+            <span className="text-sm text-slate-500">{currentUser.email}</span>
           </Link>
         </>
       )}

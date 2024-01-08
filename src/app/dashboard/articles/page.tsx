@@ -1,90 +1,41 @@
+"use client";
+
 import React from "react";
 import Card from "./Card";
+import ProgressBar from "@/components/form/ProgressBar";
+import useArticle from "@/hooks/useArticle";
+import { useAuth } from "@/contexts/AuthProvider";
 
 export default function Articles() {
+  const { currentUser } = useAuth();
+  const { articles, loading } = useArticle(false, "", currentUser);
+
   return (
     <div>
-      <Card
-        author="tiudtg5gdtg8"
-        createAt="14/07/2021"
-        id="ktgjidtgdt8dt"
-        order={1}
-        readTimer={8}
-        reads={145}
-        title="Lorem ipsum dolor set amet"
-      />
-      <Card
-        author="tiudtg5gdtg8"
-        createAt="14/07/2021"
-        id="ktgjidtgdt8dt"
-        order={2}
-        readTimer={8}
-        reads={145}
-        title="Lorem ipsum dolor set amet"
-      />
-      <Card
-        author="tiudtg5gdtg8"
-        createAt="14/07/2021"
-        id="ktgjidtgdt8dt"
-        order={3}
-        readTimer={8}
-        reads={145}
-        title="Lorem ipsum dolor set amet"
-      />
-      <Card
-        author="tiudtg5gdtg8"
-        createAt="14/07/2021"
-        id="ktgjidtgdt8dt"
-        order={4}
-        readTimer={8}
-        reads={145}
-        title="Lorem ipsum dolor set amet"
-      />
-      <Card
-        author="tiudtg5gdtg8"
-        createAt="14/07/2021"
-        id="ktgjidtgdt8dt"
-        order={5}
-        readTimer={8}
-        reads={145}
-        title="Lorem ipsum dolor set amet"
-      />
-      <Card
-        author="tiudtg5gdtg8"
-        createAt="14/07/2021"
-        id="ktgjidtgdt8dt"
-        order={6}
-        readTimer={8}
-        reads={145}
-        title="Lorem ipsum dolor set amet"
-      />
-      <Card
-        author="tiudtg5gdtg8"
-        createAt="14/07/2021"
-        id="ktgjidtgdt8dt"
-        order={7}
-        readTimer={8}
-        reads={145}
-        title="Lorem ipsum dolor set amet"
-      />
-      <Card
-        author="tiudtg5gdtg8"
-        createAt="14/07/2021"
-        id="ktgjidtgdt8dt"
-        order={8}
-        readTimer={8}
-        reads={145}
-        title="Lorem ipsum dolor set amet"
-      />
-      <Card
-        author="tiudtg5gdtg8"
-        createAt="14/07/2021"
-        id="ktgjidtgdt8dt"
-        order={9}
-        readTimer={8}
-        reads={145}
-        title="Lorem ipsum dolor set amet"
-      />
+      {loading && (
+        <ProgressBar
+          progress={25}
+          spinnerMode
+          indicatorWidth={5}
+          trackWidth={5}
+          size={40}
+        />
+      )}
+
+      {!loading &&
+        articles.map((article: any, index: number) => {
+          return (
+            <Card
+              key={index}
+              order={index + 1}
+              createAt={article.pubAt}
+              channel={article.pubAt}
+              readTimer={article.readTime}
+              reads={article.reads}
+              title={article.title}
+            />
+          );
+        })}
     </div>
   );
 }

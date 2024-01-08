@@ -1,8 +1,12 @@
-import { NextPage } from "next";
+"use client";
 
 import Card from "@/components/article/Card";
+import ProgressBar from "@/components/form/ProgressBar";
+import useArticle from "@/hooks/useArticle";
 
-const Home: NextPage = async () => {
+function Home() {
+  const { articles, loading } = useArticle();
+
   return (
     <div
       className="
@@ -10,29 +14,31 @@ const Home: NextPage = async () => {
       flex flex-wrap items-center justify-center gap-8
     "
     >
-      <Card
-        id="X4875rscSSKJf4f"
-        thumbnail="/images/tests/1.png"
-        title="A complete beginner guide on SOLID design principles"
-        pubAt="Septembre 2023"
-        readers={512}
-      />
-      <Card
-        id="X4875rscSSKJf4f"
-        thumbnail="/images/tests/2.jpg"
-        title="JavaScript programming language a step buy step guide 2024"
-        pubAt="Avril 2023"
-        readers={789}
-      />
-      <Card
-        id="X4875rscSSKJf4f"
-        thumbnail="/images/tests/3.jpg"
-        title="Lorem ipsum dolor set alet consectetur adiscipim elit"
-        pubAt="Mai 2023"
-        readers={478}
-      />
+      {loading && (
+        <ProgressBar
+          progress={25}
+          spinnerMode
+          indicatorWidth={5}
+          trackWidth={5}
+          size={40}
+        />
+      )}
+
+      {!loading &&
+        articles.map((article: any, index: number) => {
+          return (
+            <Card
+              key={index}
+              channel={article.channel}
+              thumbnail={article.thumbnail}
+              title={article.title}
+              pubAt={article.pubAt}
+              readers={article.reads}
+            />
+          );
+        })}
     </div>
   );
-};
+}
 
 export default Home;
